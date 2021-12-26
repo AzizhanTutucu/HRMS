@@ -10,6 +10,6 @@ import com.example.hrms.entities.concretes.JobSeeker;
 public interface JobSeekerService {
 	DataResult<List<JobSeeker>>getAll();
 	
-	Result add(JobSeeker jobSeeker) throws NumberFormatException, RemoteException;
+	Result add(JobSeeker jobSeeker) throws NumberFormatException, RemoteException ;
 
 }

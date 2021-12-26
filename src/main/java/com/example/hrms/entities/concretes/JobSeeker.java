@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(callSuper = false)
 @Table(name="job_seekers")
+@EqualsAndHashCode(callSuper = false)
 public class JobSeeker extends User{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

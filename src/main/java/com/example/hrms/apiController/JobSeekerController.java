@@ -29,7 +29,7 @@ public class JobSeekerController {
 		return this.jobSeekerService.getAll();
 	}
 	@PostMapping("/add")
-	Result add(JobSeeker jobSeeker) throws NumberFormatException, RemoteException {
+	Result add(JobSeeker jobSeeker) throws NumberFormatException, RemoteException   {
 		return this.jobSeekerService.add(jobSeeker);
 	}
 

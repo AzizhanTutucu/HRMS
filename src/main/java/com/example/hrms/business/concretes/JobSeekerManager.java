@@ -38,17 +38,12 @@ public class JobSeekerManager implements JobSeekerService{
 	}
 
 	@Override
-	public Result add(JobSeeker jobSeeker) throws NumberFormatException, RemoteException {
-//		Result isPerson=null;
-//		try {
-//			isPerson= mernisCheckService.mernisCheck(jobSeeker);
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		if(!isPerson.isSuccess()) {
-//			return new ErrorResult(false, "Mernis sorgulaması başarısız.");
-//			
-//		}
+	public Result add(JobSeeker jobSeeker) throws NumberFormatException, RemoteException   {
+		 Result checkPerson= mernisCheckService.mernisCheck(jobSeeker);
+		
+		if(!checkPerson.isSuccess()) {
+			return new ErrorResult(false, "Kişi bulunamadı.");
+		}
 		
 		
 		if(!this.JobSeekerCheck(jobSeeker).isSuccess()) {
