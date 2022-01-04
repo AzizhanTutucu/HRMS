@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,22 +19,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="employers")
-@EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobAdvertisements"})
-public class Employer extends User {
+@Table(name="city")
+@EqualsAndHashCode
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","job_advertisements","jobAdvertisements"})
+public class City {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="city_id")
 	private int id;
-	@Column(name="company_name")
-	private String companyName;
-	@Column(name="web_site")
-	private String webSıte;
-	@Column(name="phone_number")
-	private String companyPhone;
+	@Column(name="city_name")
+	private String cityName;
 	
-	@OneToMany(mappedBy = "employer")
+	@OneToMany(mappedBy = "city")
 	private List<JobAdvertisement> jobAdvertisements;
 
 }

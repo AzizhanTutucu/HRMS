@@ -1,19 +1,25 @@
 package com.example.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "job_positions")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobAdvertisements"})
 public class JobPosition {
 	
 	@Id
 	@GeneratedValue
-	@Column(name="id")
-	private int id;
+	@Column(name="job_position_id")
+	private int positionId;
 	@Column(name="position")
 	private String positionName;
 	
@@ -21,18 +27,18 @@ public class JobPosition {
 		
 	}
 
-	public JobPosition(int id, String positionName) {
+	public JobPosition(int positionId, String positionName) {
 		super();
-		this.id = id;
+		this.positionId = positionId;
 		this.positionName = positionName;
 	}
 
 	public int getId() {
-		return id;
+		return positionId;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.positionId = id;
 	}
 
 	public String getPositionName() {
@@ -42,5 +48,7 @@ public class JobPosition {
 	public void setPositionName(String positionName) {
 		this.positionName = positionName;
 	}
+	@OneToMany(mappedBy = "jobPosition")
+	private List<JobAdvertisement> jobAdvertisements;
 
 }
