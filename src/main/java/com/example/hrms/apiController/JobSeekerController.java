@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,7 @@ public class JobSeekerController {
 		return this.jobSeekerService.getAll();
 	}
 	@PostMapping("/add")
-	Result add(JobSeeker jobSeeker) throws NumberFormatException, RemoteException   {
+	Result add(@RequestBody JobSeeker jobSeeker) throws NumberFormatException, RemoteException   {
 		return this.jobSeekerService.add(jobSeeker);
 	}
 

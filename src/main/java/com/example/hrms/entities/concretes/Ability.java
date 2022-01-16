@@ -5,33 +5,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
+@Table(name="abilities")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name="users")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User {
-	
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+public class Ability {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name="ability_id")
 	private int id;
-	@Column(name="password")
-	private String password;
+	@Column(name="ability_name")
+	private String abilityName;
 	
-//	@Email
-//	@NotBlank
-//	@NotNull
-	@Column(name="email")
-	private String eMail;
-
+	@ManyToOne()
+	@JoinColumn(name="cv_id")
+	private Cv cv;
 }

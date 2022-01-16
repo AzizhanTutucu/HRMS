@@ -13,6 +13,7 @@ import com.example.hrms.business.abstracts.JobAdvertisementService;
 import com.example.hrms.core.results.DataResult;
 import com.example.hrms.core.results.Result;
 import com.example.hrms.entities.concretes.JobAdvertisement;
+import com.example.hrms.entities.dtos.JobAdvertisementDto;
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
@@ -35,13 +36,17 @@ public class JobAdvertisementController {
 	public DataResult<List<JobAdvertisement>>  getByIsActiveTrue(){
 		return this.jobAdvertisementService.getByIsActiveTrue();
 	}
-	@GetMapping("/findAllByORderByApplicationDeadLineAsc")
-	public DataResult<List<JobAdvertisement>>  findAllByORderByApplicationDeadLineAsc( ){
-		return this.jobAdvertisementService.findAllByOrderByApplicationDeadLineAsc();
+	@GetMapping("/getByORderByApplicationDeadLineAsc")
+	public DataResult<List<JobAdvertisement>>  getByORderByApplicationDeadLineAsc( ){
+		return this.jobAdvertisementService.getByOrderByApplicationDeadLineAsc();
 	}
 	@GetMapping("/getByIsActiveAndEmloyer_CompanyName")
 	public DataResult<List<JobAdvertisement>> getByEmloyer_CompanyNameAndIsActiveTrue(@RequestParam String companyName){
 		return this.jobAdvertisementService.getByEmployer_CompanyNameAndIsActiveTrue(companyName);
+	}
+	@GetMapping("/getJobAdvertisementDtoWithEmployerDetails")
+	public DataResult<List<JobAdvertisementDto>> getJobAdvertisementDtoWithEmployerDetails(){
+		return this.jobAdvertisementService.getJobAdvertisementDtoWithEmployerDetails();
 	}
 
 }
